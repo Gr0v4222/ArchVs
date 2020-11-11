@@ -19,7 +19,7 @@ asm (
     "xor $0x21, %0"
     : "=r" (ASCIINumber)
     : "0" (number) );
-cout<<"'"<<ASCIINumber<<"'"endl;
+cout<<"'"<<ASCIINumber<<"'"<<endl;
 return 0;
 }
 
