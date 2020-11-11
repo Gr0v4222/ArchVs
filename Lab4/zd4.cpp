@@ -1,35 +1,25 @@
-
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
-int main()
-{
-// задание 1
-int p1;
-int p2;
-cout<<"a+b=?\n";
-cout<<"Enter a:\n";
-cin>>p1;
-cout<<"Enter b:\n";
-cin>>p2;
+
+int main(){
+unsigned int ASCIINumber = 0x31;
+unsigned int result;
 
 asm (
-"addl %[Src],%[Dest]\n\t"
-: [Dest]"+r" (p1)
-: [Src]"r" (p2)
-: "cc"
-);
-asm goto (
-"jo %l2"
-:: [Dest]"r" (p1), [Src]"r" (p2)
-: "cc"
-: carry
-);
+    "and $0x0F, %0"
+    : "=r" (result)
+    : "0" (ASCIINumber)
+    );
 
-cout << "\nTrue " <<p1<< endl;
-if(0)
-{
-carry:
-cout << "\nFalse " <<p1<< endl;
-}
+cout<<"'"<<result<<"'"<<endl;
+
+unsigned int number = 0x09;
+asm (
+    "xor $0x21, %0"
+    : "=r" (ASCIINumber)
+    : "0" (number) );
+cout<<"'"<<ASCIINumber<<"'"endl;
 return 0;
 }
+
