@@ -1,10 +1,10 @@
 .global _init
 _init:
-    movl 4(%esp), %esi //Адрес начального элемента
-    movl $0, %ebx //Счетчик для шагов
-    movl $0, %ecx //Счетчик для ячеек
+    movl 4(%esp), %esi 
+    movl $0, %ebx 
+    movl $0, %ecx 
 _re:
-    movl 4(%esp), %eax //Текущий адрес
+    movl 4(%esp), 
     addl %ecx, %eax
     movl %ebx, (%eax)
     cmpl 8(%esp),%eax
